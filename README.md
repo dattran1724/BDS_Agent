@@ -28,17 +28,6 @@ Hệ thống ứng dụng kiến trúc **Human-in-the-loop (HITL)** của LangGr
 5. Đặt tên bất kỳ (VD: `bds-agent-key`) và bấm Create.
 6. **Copy ngay đoạn mã (Bắt đầu bằng `gsk_...`)** vì nó chỉ hiện 1 lần duy nhất.
 
-### Thiết lập vào dự án:
-1. Tại thư mục gốc của dự án, bạn sẽ thấy file `.env.example`.
-2. Copy file đó và đổi tên thành `.env` (Nếu dùng Windows, bạn có thể mở file này bằng Notepad và Save As thành `.env`).
-3. Mở file `.env` lên và dán Key của bạn vào dòng `OPENAI_API_KEY`:
-   ```env
-   OPENAI_API_KEY=gsk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-   OPENAI_API_BASE=https://api.groq.com/openai/v1
-   ```
-
-*(Lưu ý: Mặc dù tên biến là OPENAI nhưng do cấu trúc code dùng chuẩn API tương thích của OpenAI để gọi Groq, bạn BẮT BUỘC phải dùng tên biến này và giữ nguyên dòng OPENAI_API_BASE)*.
-
 ---
 
 ## 💻 Hướng Dẫn Cài Đặt & Chạy Ứng Dụng Nội Bộ (Local)
@@ -65,48 +54,9 @@ Trình duyệt sẽ tự động bật lên ở địa chỉ: `http://localhost:
 
 ---
 
-## ☁️ Hướng Dẫn Deploy Lên Mạng (Cho người khác Test)
-
-### CÁCH 1: GIẢI PHÁP TỐC ĐỘ BÀN THỜ (Dùng Ngrok - Khuyên Dùng Cho Demo Nhanh)
-Cách này giúp bạn biến luôn máy tính của bạn thành Server. Mất đúng 1 phút là có link gửi cho khách, không cần set up Cloud phức tạp. Khách truy cập bình thường miễn là máy tính của bạn vẫn đang mở và đang chạy 2 lệnh Terminal ở trên.
-
-1. Vào [ngrok.com](https://ngrok.com/) tạo 1 tài khoản miễn phí và tải file `.exe` về máy tính.
-2. Trên trang chủ ngrok, copy lệnh Authtoken và dán vào Terminal của bạn:
-   ```bash
-   ngrok config add-authtoken <mã_token_của_bạn>
-   ```
-3. Mở Terminal lên gõ lệnh:
-   ```bash
-   ngrok http 8501
-   ```
-4. Ngrok sẽ cấp cho bạn một link dạng `https://xxxx.ngrok-free.app`. Bạn chỉ cần copy link này gửi cho bất kỳ ai!
-
-
-### CÁCH 2: DEPLOY ĐÁM MÂY LÂU DÀI (Render + Streamlit Cloud)
-Nếu bạn muốn hệ thống chạy 24/7 mà không cần mở máy tính cá nhân.
-
-**Bước 1: Đẩy code lên GitHub**
-Tạo 1 Repository trên GitHub và đẩy toàn bộ thư mục code lên (Lưu ý: Git bỏ qua file `.env`).
-
-**Bước 2: Deploy Backend (FastAPI)**
-- Tạo tài khoản [Render.com](https://render.com) hoặc [Railway.app](https://railway.app).
-- Tạo Web Service mới -> Kết nối với Github của bạn.
-- Lệnh chạy (Start Command): `uv run uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-- Vào mục Environment Variables điền 2 biến môi trường y hệt trong file `.env`:
-  `OPENAI_API_KEY`: <Điền key Groq của bạn>
-  `OPENAI_API_BASE`: `https://api.groq.com/openai/v1`
-- Sau khi Deploy thành công, Render sẽ cấp link Backend (VD: `https://bds-backend.onrender.com`).
-
-**Bước 3: Deploy Frontend (Streamlit Cloud)**
-- Mở file `frontend/app.py` ra. Ở dòng số 5, sửa lại cái link Backend nội bộ thành link Render vừa cấp:
-  `BACKEND_URL = "https://bds-backend.onrender.com"`
-- Đẩy phần code vừa sửa lên Github.
-- Vào [share.streamlit.io](https://share.streamlit.io/), đăng nhập bằng Github, chọn kho chứa và file `frontend/app.py` rồi bấm Deploy.
-- Streamlit sẽ cấp cho bạn 1 đường link cực đẹp để gửi cho khách hàng.
-
----
-
 ## 📖 Hướng Dẫn Sử Dụng Agent Trên Giao Diện
+
+Dán key vào ô API Key bên trái màn hình
 
 Khi giao diện chat mở lên, quy trình làm việc với Agent sẽ trải qua **5 bước**:
 
