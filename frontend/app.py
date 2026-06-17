@@ -513,11 +513,11 @@ if st.session_state.thread_id and st.session_state.agent_state:
                     formatted_content = st.session_state.local_final_content.replace('\n', '  \n')
                     st.markdown(formatted_content)
             
-            if state.get("issues_found"):
-                with st.expander("⚠️ Lịch sử kiểm duyệt nội dung (Validator Node)", expanded=False):
-                    st.write(f"Kết quả kiểm duyệt: **{state.get('validation_result')}**")
-                    for issue in state.get("issues_found", []):
-                        st.write(f"- {issue}")
+            # if state.get("issues_found"):
+            #     with st.expander("⚠️ Lịch sử kiểm duyệt nội dung (Validator Node)", expanded=False):
+            #         st.write(f"Kết quả kiểm duyệt: **{state.get('validation_result')}**")
+            #         for issue in state.get("issues_found", []):
+            #             st.write(f"- {issue}")
             
             # st.markdown("<div style='text-align: center; color: gray; margin-top: 10px;'>Bạn có thể copy hoặc nhập phản hồi ở dưới nếu muốn Agent sửa đổi bài viết 👇</div>", unsafe_allow_html=True)
 
