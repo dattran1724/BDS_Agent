@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 
 # Backend FastAPI URL
-BACKEND_URL = "http://127.0.0.1:8000"
+BACKEND_URL = "https://bds-agent-vm7a.onrender.com"
 
 st.set_page_config(
     page_title="AI Agent Viết Bài Bất Động Sản",
