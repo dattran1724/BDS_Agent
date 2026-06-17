@@ -1,4 +1,4 @@
-# Siêu Cò AI - Agent Viết Content Bất Động Sản Tự Động
+# Agent Viết Content Bất Động Sản Tự Động
 
 Đây là hệ thống AI Agent hoàn chỉnh (Frontend + Backend) được thiết kế chuyên biệt để tự động hóa quy trình viết Content bán hàng Facebook cho các Môi giới Bất Động Sản tại Việt Nam.
 
